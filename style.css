@@ -1,5 +1,5 @@
 html {
-	background-image: -webkit-linear-gradient(75deg, #ac12bc 30%, #24acab 90%);
+	background-image: -webkit-linear-gradient(175deg, #ac12bc 30%, #24acab 90%);
 	background-image: linear-gradient(115deg, #ac12bc 1%, #24acab 95%);
 	/*position: relative;*/
 	z-index: 3;
@@ -12,14 +12,14 @@ html {
 .card{
 	position: relative;
 	display: block;
-	width: 100%;
-	max-width: 300px;
-	margin: 0 auto;
+	width: 500px;/*100%*/
+	max-width: 600px;
+	margin: 0;/*auto*/
 	padding: 30px;
 	background: white;
 	box-shadow: 0 0 50px rgba(0,0,0,0.2);
-	border-radius: 5px;
-	font-size: 2rem;
+	border-radius: 35px;
+	/*font-size: 1rem;*/
 }
 
 
@@ -40,7 +40,7 @@ html {
 	transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
 	outline: none;
-	font-size: 1.7rem;
+	font-size: 1rem;
 }
 
 .card form input:not(:last-child) {
