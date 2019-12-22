@@ -17,9 +17,11 @@
 			// Check connection
 			if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
 			else{echo("");}
-			if (!$_POST["email"]=="") {
-				$sql = "INSERT INTO users (ID, nick, email,rooms) VALUES (NULL, '$_POST[nick]', ''$_POST[email]'',NULL)";
-				$result = mysqli_query($conn, $sql);
+			if (isset($_POST["email"])) {
+				$sql = "INSERT INTO users (ID, nick, email,rooms) VALUES (NULL, '$_POST[nick]', '$_POST[email]',NULL)";
+				if ($conn->query($sql) === TRUE) {
+    				echo "Registered!";
+				} else {echo "Error: " . $sql . "<br>" . $conn->error;}
 			}
 			
 			mysqli_close($conn);
