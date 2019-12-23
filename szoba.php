@@ -17,37 +17,49 @@
 			else{echo("");}
 
 			
- 			
-			if (isset($_POST["gomb"])) {
+ 			if (isset($_POST["gomb"])) {
 
-			$sql = "UPDATE `rooms` SET `turn` = '"."' WHERE `rooms`.`ID` = '".intval($_POST["roomNum"])."'";
-			
- 			$result = mysqli_query($conn, $sql);
-				if ($conn->query($sql) === TRUE) {
-    				echo "New record created successfully";
-				} else {
-    				echo "Error: " . $sql . "<br>" . $conn->error;
-				}
+				$sql = "UPDATE `rooms` SET `turn` = '".$_POST["gomb"]."' WHERE `rooms`.`ID` = '".intval($_POST["roomNum"])."'";
+				
+	 			$result = mysqli_query($conn, $sql);
+					if ($conn->query($sql) === TRUE) {
+	    				/*echo "New record created successfully<br>";
+	    				echo $_POST["gomb"]."<br>";
+	    				echo $_POST["roomNum"]."<br>";
+	    				echo $sql;*/
+					} else {
+	    				echo "Error: " . $sql . "<br>" . $conn->error;
+					}
 			}
+
 
 			$sql = "SELECT members, turn FROM `rooms` WHERE ID = '".intval($_POST["roomNum"])."'";	
  			$result = mysqli_query($conn, $sql);
  			while($row = $result->fetch_assoc()){$members = explode("!", $row["members"]);$turn=$row["turn"];}
 
+ 			
+
  			echo '
  			<div class="card">
  				<form method="post" action="/zoliprojekt/szoba.php">
-				<h1 class="roomuid">'.$_POST["roomNum"].'</h1>
+				<h1 class="roomuid">Room #'.$_POST["roomNum"].'</h1>
  			';
+ 			$szobaSzam = $_POST["roomNum"];
  			for ($x = 0; $x <= sizeof($members)-1; $x++){
- 				if ($x+1==$turn) {
- 					echo '<button type="submit" name="gomb" value="'.strval($x+1).'">'.$members[$x]." $$$</button>";}
- 				else{
- 					echo '<button type="submit" name="gomb" value="'.strval($x+1).'">'.$members[$x]."</button>";}				
+ 				//print($x+1);
+ 				echo '<button type="submit" name="gomb" value="'.strval($x+1).'">'.$members[$x];
+				if ($x+1==$turn) {echo" $$$";}
+				echo '	</button>
+ 						<input type="hidden" name="roomNum" value="'.$szobaSzam.'">
+ 						
+ 					';
+
 			}
+			echo '<button form="haza" >Back</button>';
 			echo "</form></div>";
+
 		?>
-		
+		<form action="/zoliprojekt/email.php" id="haza"></form>
 		<!--<footer>2019 Ábel Bódis C</footer>-->
 	</body>
 </html>

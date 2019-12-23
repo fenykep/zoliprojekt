@@ -63,7 +63,7 @@ button {
 }
 
 .card form input:not(:last-child) {
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .card form input:last-child {
