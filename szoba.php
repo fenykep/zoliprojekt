@@ -19,18 +19,14 @@
 
 			$sql = "SELECT members FROM `rooms` WHERE ID = '".intval($_POST["roomNum"])."'";	
  			$result = mysqli_query($conn, $sql);
- 			while($row = $result->fetch_assoc())
- 			{
- 				$members = explode("!", $row["members"]);
- 			}
+ 			while($row = $result->fetch_assoc()){$members = explode("!", $row["members"]);}
+
  			echo '
  			<div class="card">
 				<h1 class="roomuid">'.$_POST["roomNum"].'</h1>
  			';
- 			for ($x = 0; $x <= sizeof($members)-1; $x++) 
-			{
-				echo "<h2>".$members[$x]."</h2>";
-			}
+ 			for ($x = 0; $x <= sizeof($members)-1; $x++){
+				echo '<button name="gomb" value="'.strval($x+1).'">'.$members[$x]."</button>";}
 			echo "</div>";
 		?>
 		

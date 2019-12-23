@@ -33,7 +33,12 @@
 				<?php
 				if (!isset($_COOKIE["emailsuti"]) and !isset($_POST["email"])) {
 					echo '<input name="email" type="email" placeholder="Enter your email">';}
-				elseif(!isset($_POST["email"])){echo '<input name="email" type="email" value='.$_COOKIE["emailsuti"].'>';}
+				//elseif(!isset($_POST["email"])){echo '<input name="email" type="email" value='.$_COOKIE["emailsuti"].'>';}
+				elseif(!isset($_POST["email"]))
+				{
+					header("Refresh:0; url=/zoliprojekt/email.php");
+					exit;
+				}
 				else{echo '<input name="email" type="email" value='.$_POST["email"].'>';}?>
 
 				<input type="submit" value="Boom">

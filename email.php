@@ -25,7 +25,8 @@
 
 			echo "<br>";
 						
-
+			if (!isset($_POST["email"])) {$_POST["email"] = $_COOKIE["emailsuti"];}
+			
 			if (!in_array($_POST["email"], $users)) 
 			{
 				echo '
