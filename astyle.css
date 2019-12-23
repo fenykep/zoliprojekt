@@ -1,6 +1,6 @@
 html {
-	background-image: -webkit-linear-gradient(75deg, #ac12bc 30%, #24acab 90%);
-	background-image: linear-gradient(115deg, #ac12bc 1%, #24acab 95%);
+	background-image: -webkit-linear-gradient(180deg, #ac12bc 30%, #24acab 90%);
+	background-image: linear-gradient(180deg, #ac12bc 1%, #24acab 95%);
 	position: relative;
 	z-index: 3;
 	padding: 100px;

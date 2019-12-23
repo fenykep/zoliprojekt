@@ -21,13 +21,16 @@
 			$sql = "SELECT email FROM users;";
 			$users = array();
 			
+			
 			$result = mysqli_query($conn, $sql);
 			while($row = $result->fetch_assoc()) {
 				//echo $row["email"] . "<br>";
 				array_push($users, $row["email"]);
 			} 
+
 			echo "<br>";
 						
+
 			if (!in_array($_POST["email"], $users)) {
 				echo '
 				<div class="card">
@@ -40,39 +43,28 @@
 				</div>
 				';
 			}
-			else{echo '
+			else{
+				setcookie("emailsuti",$_POST["email"],time() + (86400 * 365), "/");
+				$sql = "SELECT nick, rooms FROM `users` WHERE email = '".$_COOKIE["emailsuti"]."'";
+				$result = mysqli_query($conn, $sql);
+				while($row = $result->fetch_assoc()) {
+					$cNick = $row["nick"];
+					$cRooms = $row["rooms"];
+					//echo "valami történik";
+				}
+				echo '
 				<div class="card">
-					<h1 class="roomuid">#Room UID</h1>
-					<h2 class="member">Tóth Zoltán</h2>
-					<h2 title="The '."'$'".' sign marks who paid last time " class="member">Bódis Gergely</h2>
+					<h1 class="nick">'.$cNick.' Társaságai</h1>
+					<!--ide listázd az elérhető szobákat-->
 					<h2><a href="/zoliprojekt/index.php">ADD</a></h2>
 				</div>
-			';}//login
+			';}
 			
 			mysqli_close($conn);
 		?>
 
 		
-		
+		<!--<h2 title="The '."'$'".' sign marks who paid last time " class="member">Bódis Gergely</h2>-->
 		<!--<footer>2019 Ábel Bódis C</footer>-->
 	</body>
 </html>
-
-<!--
-	
-
-			$sql = "SELECT * FROM users;";
-			echo '<h1>Szevasztok</h1>';
-			$result = $conn->query($sql);
-			if ($result->num_rows = 0) {
-				echo "nincs itt semmi látnivaló";
-			}
-			
-			
-			$sql = "INSERT INTO termekek (`id`, `termeknev`, `tag`, `ar`, `szin`, `kep`) VALUES (NULL, '$_POST[termeknev]', '$_POST[tag]', '$_POST[ar]', '$_POST[szin]', '$kephely');";
-    echo "<br>".$sql."<br>";
-    if(mysqli_query($conn, $sql)===TRUE){echo("done!");};
-			mysqli_close($conn);
-			?>
-
--->

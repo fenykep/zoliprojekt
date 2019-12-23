@@ -29,7 +29,15 @@
 		<div class="card">
 			<form action="/zoliprojekt/email.php" method="post">
 				<h1>Hello</h1>
-				<input name="email" type="email" placeholder="Enter your email">
+				<?php
+				if (!isset($_COOKIE["emailsuti"])) {
+					echo '<input name="email" type="email" placeholder="Enter your email">';
+				}
+				else{
+					echo '<input name="email" type="email" value='.$_COOKIE["emailsuti"].'>';	
+				}
+				?>
+				
 				<input type="submit" value="Boom">
 				<!--Itt csekkold, hogy van-e ilyen email a databaseban-->
 			</form>
