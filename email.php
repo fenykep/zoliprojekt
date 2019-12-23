@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/zoliprojekt/astyle.css">
+		<link rel="stylesheet" href="/zoliprojekt/nstyle.css">
 	</head>
 	
 	<body>
@@ -20,18 +20,14 @@
 
 			$sql = "SELECT email FROM users;";
 			$users = array();
-			
-			
 			$result = mysqli_query($conn, $sql);
-			while($row = $result->fetch_assoc()) {
-				//echo $row["email"] . "<br>";
-				array_push($users, $row["email"]);
-			} 
+			while($row = $result->fetch_assoc()){array_push($users, $row["email"]);} 
 
 			echo "<br>";
 						
 
-			if (!in_array($_POST["email"], $users)) {
+			if (!in_array($_POST["email"], $users)) 
+			{
 				echo '
 				<div class="card">
 					<form method="post" action="/zoliprojekt/index.php">
@@ -43,22 +39,43 @@
 				</div>
 				';
 			}
-			else{
+
+			else
+			{
 				setcookie("emailsuti",$_POST["email"],time() + (86400 * 365), "/");
-				$sql = "SELECT nick, rooms FROM `users` WHERE email = '".$_COOKIE["emailsuti"]."'";
+				$sql = "SELECT nick, rooms FROM `users` WHERE email = '".$_POST["email"]."'";
 				$result = mysqli_query($conn, $sql);
-				while($row = $result->fetch_assoc()) {
+				
+				while($row = $result->fetch_assoc()) 
+				{
 					$cNick = $row["nick"];
-					$cRooms = $row["rooms"];
-					//echo "valami történik";
+					$cRooms = explode("x", $row["rooms"]);
 				}
+				
 				echo '
 				<div class="card">
-					<h1 class="nick">'.$cNick.' Társaságai</h1>
-					<!--ide listázd az elérhető szobákat-->
-					<h2><a href="/zoliprojekt/index.php">ADD</a></h2>
+					<form action="/zoliprojekt/email.php" method="post">
+						<h1 class="nick">'.$cNick.' Társaságai</h1>
+					';					
+				
+				$roomNames = array();
+				for ($x = 0; $x <= sizeof($cRooms)-1; $x++) 
+				{
+ 					$sql = "SELECT name FROM `rooms` WHERE ID = '".intval($cRooms[$x])."'";	
+ 					$result = mysqli_query($conn, $sql);
+ 					while($row = $result->fetch_assoc())
+ 						{
+ 							array_push($roomNames, $row["name"]);
+ 							echo '<button type="submit" value="'.$cRooms[$x].'" >'.$row["name"].'</button>';
+ 						}
+				}
+				echo '
+						<h2><a href="/zoliprojekt/index.php">ADD</a></h2>
+					</form>
 				</div>
-			';}
+				';
+				
+			}
 			
 			mysqli_close($conn);
 		?>

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/zoliprojekt/astyle.css">
+		<link rel="stylesheet" href="/zoliprojekt/nstyle.css">
 	</head>
 	
 	<body>
