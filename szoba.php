@@ -17,16 +17,18 @@
 			if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
 			else{echo("");}
 
-			$sql = "SELECT members FROM `rooms` WHERE ID = '".intval($_POST["roomNum"])."'";	
+			$sql = "SELECT members, turn FROM `rooms` WHERE ID = '".intval($_POST["roomNum"])."'";	
  			$result = mysqli_query($conn, $sql);
- 			while($row = $result->fetch_assoc()){$members = explode("!", $row["members"]);}
+ 			while($row = $result->fetch_assoc()){$members = explode("!", $row["members"]);$turn=$row["turn"];}
 
  			echo '
  			<div class="card">
 				<h1 class="roomuid">'.$_POST["roomNum"].'</h1>
  			';
  			for ($x = 0; $x <= sizeof($members)-1; $x++){
-				echo '<button name="gomb" value="'.strval($x+1).'">'.$members[$x]."</button>";}
+ 				if ($x+1==$turn) {echo '<button name="gomb" value="'.strval($x+1).'">'.$members[$x]." $$$</button>";}
+ 				else{echo '<button name="gomb" value="'.strval($x+1).'">'.$members[$x]."</button>";}				
+			}
 			echo "</div>";
 		?>
 		
