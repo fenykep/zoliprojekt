@@ -54,7 +54,7 @@
 				
 				echo '
 				<div class="card">
-					<form action="/zoliprojekt/email.php" method="post">
+					<form action="/zoliprojekt/szoba.php" method="post">
 						<h1 class="nick">'.$cNick.' Társaságai</h1>
 					';					
 				
@@ -66,7 +66,7 @@
  					while($row = $result->fetch_assoc())
  						{
  							array_push($roomNames, $row["name"]);
- 							echo '<button type="submit" value="'.$cRooms[$x].'" >'.$row["name"].'</button>';
+ 							echo '<button name="roomNum" type="submit" value="'.$cRooms[$x].'" >'.$row["name"].'</button>';
  						}
 				}
 				echo '
@@ -81,7 +81,7 @@
 		?>
 
 		
-		<!--<h2 title="The '."'$'".' sign marks who paid last time " class="member">Bódis Gergely</h2>-->
+		<!-- title="The '."'$'".' sign marks who paid last time " -->
 		<!--<footer>2019 Ábel Bódis C</footer>-->
 	</body>
 </html>
