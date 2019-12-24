@@ -71,7 +71,9 @@
  						}
 				}
 				echo '
-						<h2><a href="/zoliprojekt/index.php">ADD</a></h2>
+						<button name="cjr" value="join" form="cj">Join Room</button>
+						<button name="cjr" value="create" form="cj">Create Room</button>
+						<h2><a href="/zoliprojekt/index.php">Back</a></h2>
 					</form>
 				</div>
 				';
@@ -80,8 +82,7 @@
 			
 			mysqli_close($conn);
 		?>
-
-		
+		<form action="/zoliprojekt/newroom.php" method="post" id="cj"></form>
 		<!-- title="The '."'$'".' sign marks who paid last time " -->
 		<!--<footer>2019 Ábel Bódis C</footer>-->
 	</body>
