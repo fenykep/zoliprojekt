@@ -2,7 +2,7 @@
 
 1 szoba max 5fő
 1 ember max 5 szoba
-
+\n
 ember{ID, nick, email, rooms}
 	rooms: 6x17x864x32
 room{ID, name, members, turn}
