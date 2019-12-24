@@ -24,6 +24,37 @@
 			while($row = $result->fetch_assoc()){array_push($users, $row["email"]);} 
 
 			echo "<br>";
+
+			if (isset($_POST["rTj"])){
+				$sql = "UPDATE users SET rooms = coalesce(concat(rooms,'".strval($_POST["rTj"])."x'),'".strval($_POST["rTj"])."x',rooms) WHERE email = '".$_COOKIE["emailsuti"]."'; "." UPDATE rooms SET members = concat(members,'".$_COOKIE["nickSuti"]."!') WHERE ID = ".$_POST["rTj"];
+				echo $sql;
+				echo "<br>";
+				mysqli_multi_query($conn, $sql);
+				header("Refresh:0");
+				/*	if ($conn->query($sql) === TRUE) {
+	    				echo "Ezennel belépést nyert a kért társaságba<br>";
+					} else {
+	    				echo "Error: " . $sql . "<br>" . $conn->error;
+					}
+				$sql = "";*/
+				/*$sql = "UPDATE rooms SET members = concat(members,'".$_COOKIE["nickSuti"]."!') WHERE ID = ".$_POST["rTj"];
+				echo "<br>";
+				echo $sql;
+				echo "<br>";
+				$result = mysqli_query($conn, $sql);
+					if ($conn->query($sql) === TRUE) {
+	    				echo "És a papírmunka is elintéződött";
+					} else {
+	    				echo "Error: " . $sql . "<br>" . $conn->error;
+					}
+				*/
+				
+			}
+			
+			if (isset($_POST["rTc"])){
+				//$sql = "INSERT INTO `rooms` (`ID`, `name`, `members`, `turn`) VALUES (NULL, ".$_POST["rTc"].", 'Abel!', '1')";
+				echo "RoomName to create:".$_POST["rTc"];
+			}
 						
 			if (!isset($_POST["email"])) {$_POST["email"] = $_COOKIE["emailsuti"];}
 
@@ -50,6 +81,7 @@
 				while($row = $result->fetch_assoc()) 
 				{
 					$cNick = $row["nick"];
+					setcookie("nickSuti",$cNick,time() + (86400 * 365), "/");
 					$cRooms = explode("x", $row["rooms"]);
 				}
 				
@@ -73,7 +105,7 @@
 				echo '
 						<button name="cjr" value="join" form="cj">Join Room</button>
 						<button name="cjr" value="create" form="cj">Create Room</button>
-						<h2><a href="/zoliprojekt/index.php">Back</a></h2>
+						<h2><a href="/zoliprojekt/index.php">Logout</a></h2>
 					</form>
 				</div>
 				';
@@ -87,3 +119,9 @@
 		<!--<footer>2019 Ábel Bódis C</footer>-->
 	</body>
 </html>
+
+<!--
+
+
+UPDATE users SET rooms = concat(rooms,'1x') WHERE ID = 1
+	-->

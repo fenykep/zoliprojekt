@@ -23,10 +23,6 @@
 				
 	 			$result = mysqli_query($conn, $sql);
 					if ($conn->query($sql) === TRUE) {
-	    				/*echo "New record created successfully<br>";
-	    				echo $_POST["gomb"]."<br>";
-	    				echo $_POST["roomNum"]."<br>";
-	    				echo $sql;*/
 					} else {
 	    				echo "Error: " . $sql . "<br>" . $conn->error;
 					}
@@ -45,7 +41,7 @@
 				<h1 class="roomuid">Room #'.$_POST["roomNum"].'</h1>
  			';
  			$szobaSzam = $_POST["roomNum"];
- 			for ($x = 0; $x <= sizeof($members)-1; $x++){
+ 			for ($x = 0; $x <= sizeof($members)-2; $x++){
  				//print($x+1);
  				echo '<button type="submit" name="gomb" value="'.strval($x+1).'">'.$members[$x];
 				if ($x+1==$turn) {echo" $$$";}
