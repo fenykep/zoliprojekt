@@ -7,11 +7,13 @@
 	
 	<body>
 		<?php
+			include server.php;
+			/*		
 			$servername = "localhost";
 			$username = "root";
 			$password = "";
 			$dbname = "zoliprojekt";
-
+			*/
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 			// Check connection
