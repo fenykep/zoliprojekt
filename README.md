@@ -4,11 +4,11 @@
 1 ember max 5 szoba
 
 
-ember{ID, nick, email, rooms}
-	rooms: 6x17x864x32
-room{ID, name, members, turn}
-	!a turn eggyel kezdődik
-	Zoli!Peti!Karcsi!Gergő
+ember{ID, nick, email, rooms}<br>
+	rooms: 6x17x864x32<br>
+room{ID, name, members, turn}<br>
+	!a turn eggyel kezdődik<br>
+	Zoli!Peti!Karcsi!Gergő<br>
 amikor egy ember csinál egy szobát, akkor adj hozzá
 egy szobát a rooms táblához, add bele a kreátor nickjét (az le van tárolva PHP-ben)
 alapból nála lesz a turn (who paid last) 
