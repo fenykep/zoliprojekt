@@ -6,7 +6,7 @@
 	
 	<body>
 		<?php
-			include server.php;
+			include 'server.php';
 			/*		
 			$servername = "localhost";
 			$username = "root";
