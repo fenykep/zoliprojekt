@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/zoliprojekt/nstyle.css">
+		<link rel="stylesheet" href="/zoliprojekt/ustyle.css">
 	</head>
 	
 	<body>
@@ -55,7 +55,7 @@
  					';
 
 			}
-			echo '<button form="haza" >Back</button>';
+			echo '<button style="background-color: #d55" form="haza" >Back</button>';
 			echo "</form></div>";
 
 		?>

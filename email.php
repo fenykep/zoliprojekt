@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/zoliprojekt/nstyle.css">
+		<link rel="stylesheet" href="/zoliprojekt/ustyle.css">
 	</head>
 	
 	<body>
@@ -26,7 +26,7 @@
 			echo "<br>";
 						
 			if (!isset($_POST["email"])) {$_POST["email"] = $_COOKIE["emailsuti"];}
-			
+
 			if (!in_array($_POST["email"], $users)) 
 			{
 				echo '
