@@ -27,8 +27,6 @@
 
 			if (isset($_POST["rTj"])){
 				$sql = "UPDATE users SET rooms = coalesce(concat(rooms,'".strval($_POST["rTj"])."x'),'".strval($_POST["rTj"])."x',rooms) WHERE email = '".$_COOKIE["emailsuti"]."'; "." UPDATE rooms SET members = concat(members,'".$_COOKIE["nickSuti"]."!') WHERE ID = ".$_POST["rTj"];
-				echo $sql;
-				echo "<br>";
 				mysqli_multi_query($conn, $sql);
 				header("Refresh:0");
 								
@@ -36,13 +34,9 @@
 			
 			if (isset($_POST["rTc"])){
 				$sql = "INSERT INTO `rooms` (`ID`, `name`, `members`, `turn`) VALUES (NULL, '".$_POST["rTc"]."','".$_COOKIE["nickSuti"]."!',1)";
-				echo $sql;
-				echo "<br>";
 				mysqli_query($conn,$sql);
 				$lastID = mysqli_insert_id($conn);
-				echo $lastID;
 				$sql = "UPDATE users SET rooms = coalesce(concat(rooms,'".strval($lastID)."x'),'".strval($lastID)."x',rooms) WHERE email = '".$_COOKIE["emailsuti"]."'";
-				echo $sql;
 				mysqli_query($conn,$sql);
 				//mysqli_multi_query($conn, $sql);
 				//header("Refresh:0");
