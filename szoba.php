@@ -12,6 +12,7 @@
 			$username = "root";
 			$password = "";
 			$dbname = "zoliprojekt";
+			//$password 6^^C,w[a1D{o*Q@j
 			*/
 			$conn = mysqli_connect($servername, $username, $password, $dbname);
 			// Check connection
