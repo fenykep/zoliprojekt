@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/zoliprojekt/ustyle.css">
+		<link rel="stylesheet" href="/zoliprojekt/nstyle.css">
 	</head>
 	
 	<body>
@@ -31,29 +31,22 @@
 				echo "<br>";
 				mysqli_multi_query($conn, $sql);
 				header("Refresh:0");
-				/*	if ($conn->query($sql) === TRUE) {
-	    				echo "Ezennel belépést nyert a kért társaságba<br>";
-					} else {
-	    				echo "Error: " . $sql . "<br>" . $conn->error;
-					}
-				$sql = "";*/
-				/*$sql = "UPDATE rooms SET members = concat(members,'".$_COOKIE["nickSuti"]."!') WHERE ID = ".$_POST["rTj"];
-				echo "<br>";
-				echo $sql;
-				echo "<br>";
-				$result = mysqli_query($conn, $sql);
-					if ($conn->query($sql) === TRUE) {
-	    				echo "És a papírmunka is elintéződött";
-					} else {
-	    				echo "Error: " . $sql . "<br>" . $conn->error;
-					}
-				*/
-				
+								
 			}
 			
 			if (isset($_POST["rTc"])){
-				//$sql = "INSERT INTO `rooms` (`ID`, `name`, `members`, `turn`) VALUES (NULL, ".$_POST["rTc"].", 'Abel!', '1')";
-				echo "RoomName to create:".$_POST["rTc"];
+				$sql = "INSERT INTO `rooms` (`ID`, `name`, `members`, `turn`) VALUES (NULL, '".$_POST["rTc"]."','".$_COOKIE["nickSuti"]."!',1)";
+				echo $sql;
+				echo "<br>";
+				mysqli_query($conn,$sql);
+				$lastID = mysqli_insert_id($conn);
+				echo $lastID;
+				$sql = "UPDATE users SET rooms = coalesce(concat(rooms,'".strval($lastID)."x'),'".strval($lastID)."x',rooms) WHERE email = '".$_COOKIE["emailsuti"]."'";
+				echo $sql;
+				mysqli_query($conn,$sql);
+				//mysqli_multi_query($conn, $sql);
+				//header("Refresh:0");
+				//echo "RoomName to create:".$_POST["rTc"];
 			}
 						
 			if (!isset($_POST["email"])) {$_POST["email"] = $_COOKIE["emailsuti"];}
@@ -124,4 +117,5 @@
 
 
 UPDATE users SET rooms = concat(rooms,'1x') WHERE ID = 1
+INSERT INTO `rooms` (`ID`, `name`, `members`, `turn`) VALUES ('5', 'DumbledoreSerege', 'Abel', '1');
 	-->

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/zoliprojekt/ustyle.css">
+		<link rel="stylesheet" href="/zoliprojekt/nstyle.css">
 	</head>
 	
 	<body>
@@ -34,10 +34,8 @@
 					echo '<input name="rTj" placeholder="What room would you like to join?">
 						  <input type="submit" value="Csatlakozom">';
 				}
-				
-
 				?>
-				
+				<h2><a href="/zoliprojekt/index.php">Ja, bocs mégse</a></h2>
 				
 			</form>
 		</div>
