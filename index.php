@@ -19,15 +19,16 @@
 			// Check connection
 			if (!$conn) {die("Connection failed: " . mysqli_connect_error());}
 			else{echo("");}
-
-			if ($_SERVER['HTTP_REFERER']=="http://localhost/zoliprojekt/email.php") {
-    					unset($_COOKIE["emailsuti"]);
-    					unset($_COOKIE["nickSuti"]);
-    					setcookie("nickSuti", '', time() - 86400, '/');
-    					setcookie("emailsuti", '', time() - 86400, '/');
-    					header("Refresh:0");
-				}
-
+			if (isset($_SERVER['HTTP_REFERER'])) {
+				if ($_SERVER['HTTP_REFERER']=="http://localhost/zoliprojekt/email.php") {
+	    					unset($_COOKIE["emailsuti"]);
+	    					unset($_COOKIE["nickSuti"]);
+	    					setcookie("nickSuti", '', time() - 86400, '/');
+	    					setcookie("emailsuti", '', time() - 86400, '/');
+	    					header("Refresh:0");
+					}
+			}
+			
 			if (isset($_POST["email"])) {
 				setcookie("emailsuti",$_POST["email"],time() + (86400 * 365), "/");
 				$sql = "INSERT INTO users (ID, nick, email,rooms) VALUES (NULL, '$_POST[nick]', '$_POST[email]',NULL)";

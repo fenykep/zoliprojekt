@@ -28,13 +28,13 @@
 				if ($_POST["cjr"]=="create") {
 					echo '<h1>New friendships begin...</h1>';
 					echo '<input name="rTc" placeholder="How do you call the band?">
-						  <input type="submit" value="Eat!">';
+						  <input type="submit" style="background-color: #5d5" value="Eat!">';
 				}
 				
 				else{
 					echo '<h1>Kapcsolatunk komolyodik</h1>';
 					echo '<input name="rTj" placeholder="What room would you like to join?">
-						  <input type="submit" value="Csatlakozom">';
+						  <input type="submit" style="background-color: #5d5" value="Csatlakozom">';
 				}
 				?>
 				<h2><a href="/zoliprojekt/index.php">Ja, bocs mégse</a></h2>
