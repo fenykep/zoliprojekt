@@ -1,0 +1,91 @@
+html {
+	background-image: -webkit-linear-gradient(40deg, #ac12bc 30%, #24acab 90%);
+	background-image: linear-gradient(90deg, #ac12bc 1%, #24acab 95%);
+	position: relative;
+	z-index: 3;
+	padding: 100px;
+	color: #999;
+	font-family: sans;
+	font-size: 16px;
+}
+
+
+.card{
+	position: relative;
+	display: block;
+	width: 100%;/*100%*/
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 30px;
+	background: white;
+	box-shadow: 0 0 50px rgba(0,0,0,0.2);
+	border-radius: 85px;
+	font-size: 1rem;
+}
+
+
+.card * {
+	box-sizing: border-box;
+	/*color: #ffcc88;
+  	text-align: center;*/
+}
+
+.card form input {
+	display: inline-block;
+	width: 100%;
+	padding: 0 20px;
+	line-height: 50px;
+	height: 50px;
+	background: white;
+	border: solid 1px #e6e6e6;
+	border-bottom-width: 3px;
+	border-radius: 35px;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	outline: none;
+	font-size: 1rem;/*1.7*/
+}
+
+button {
+	display: inline-block;
+	width: 100%;
+	padding: 0 20px;
+	margin-bottom: 10px;
+	line-height: 50px;
+	height: 50px;
+	background: white;
+	border: solid 1px #e6e6e6;
+	border-bottom-width: 3px;
+	border-radius: 25px;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	outline: none;
+	font-size: 1rem;/*1.7*/
+	background-color: #5d5;
+	color: #555;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.card form input:not(:last-child) {
+	margin-bottom: 10px;
+	
+}
+
+.card form input:last-child {
+	background-color: #5d5;
+	cursor: pointer;
+}
+
+h1 {
+  color: #ffcc88;
+  text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+a {
+	color: #d55;
+}
